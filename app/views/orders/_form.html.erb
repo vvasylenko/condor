@@ -1,0 +1,34 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation" >
+      <h2><%= pluralize(@order.errors.count, "error" ) %>
+        prohibited this order from being saved:</h2>
+      <ul>
+        <% @order.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+  <tr>
+    <td><label for="name">ПІБ</label>:</td>
+    <td><%= f.text_field :name, :size => 40 %></td>
+</tr>
+<tr>
+    <td><label for="address">Адреса</label>:</td>
+    <td><%= f.text_area :address, :rows => 3, :cols => 46 %></td>
+</tr>
+<tr>
+    <td><label for="email">E-mail</label>:</td>
+    <td><%= f.email_field :email, :size => 40 %></td>
+</tr>
+<tr>
+    <td><label for="pay_type">Тип оплати</label>:</td>
+    <td><%= f.select :pay_type, Order::PAYMENT_TYPES, :prompt => 'Виберіть метод оплати' %></td>
+</tr>
+<tr>
+    <td><%= f.submit 'Зробити замовлення' %></td>
+</tr>
+</table>
+<% end %>

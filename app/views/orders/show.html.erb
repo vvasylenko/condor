@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>ПІБ:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>Адреса:</b>
+  <%= @order.address %>
+</p>
+
+<p>
+  <b>E-mail:</b>
+  <%= @order.email %>
+</p>
+
+<p>
+  <b>Тип оплати:</b>
+  <%= @order.pay_type %>
+</p>
+
+<p>
+  <b>Замовлення:</b>
+  <%=render @order.line_items %>
+</p>
+
+
+<%= link_to 'Редагувати', edit_order_path(@order) %> |
+<%= link_to 'Назад', orders_path %>

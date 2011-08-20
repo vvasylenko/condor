@@ -1,0 +1,21 @@
+<% if notice %>
+  <p id="notice" ><%= notice %></p>
+<% end %>
+<h1>Книги</h1>
+<table>
+  <% @products.each do |product| %>
+    <tr>
+      <td><h2><%= product.title %></h2></td>
+    </tr>
+    <tr>
+      <td><%= image_tag(product.image_url) %></td>
+      <td style="vertical-align: top"><%=sanitize product.description %></td>
+    </tr>
+    <tr>
+      <td><%= number_to_currency(product.price) %></td>
+    </tr>
+    <tr>
+      <td><%= button_to 'Додати до кошику' , line_items_path(:product_id => product), :remote => true %></td>
+    </tr>
+  <% end %>
+</table>
